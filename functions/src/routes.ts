@@ -1,16 +1,42 @@
 import * as express from 'express';
-import { addProductController } from './controllers';
-import { addProductValidator } from './validators';
+import {
+	addProductController,
+	getProductController,
+	signUpUserController,
+	updateProductInfoController,
+	updateProductInventoryController,
+	updateProductPriceController,
+} from './controllers';
+import {
+	addProductValidator,
+	updateProductPriceValidator,
+	updateProductInfoValidator,
+	updateProductInventoryValidator,
+} from './validators';
 // import { firebaseApp } from '.';
-export const router = express.Router();
+export const adminRoutes = express.Router();
+export const productRoutes = express.Router();
 
-// /login
-// /logout
-// /singup
+adminRoutes.post('/product/add', addProductValidator, addProductController);
 
-// for admin user
+adminRoutes.post(
+	'/product/update/price',
+	updateProductPriceValidator,
+	updateProductPriceController
+);
 
-// admin/product/add
-router.post('/admin/product/add', addProductValidator, addProductController);
+adminRoutes.post(
+	'/product/update/inventory',
+	updateProductInventoryValidator,
+	updateProductInventoryController
+);
 
-// admin/product/qty/update
+adminRoutes.post(
+	'/product/update/info',
+	updateProductInfoValidator,
+	updateProductInfoController
+);
+
+productRoutes.get('/product', getProductController);
+
+productRoutes.post('/users', signUpUserController);

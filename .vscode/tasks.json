@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "functions/",
+      "problemMatcher": ["$tsc-watch"],
+      "label": "start dev",
+      "detail": "tsc -w"
+    },
+    {
+      "type": "npm",
+      "script": "serve",
+      "path": "functions/",
+      "isBackground": true,
+      "problemMatcher": [],
+      "label": "emulator"
+    }
+  ]
+}
